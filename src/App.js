@@ -4,6 +4,8 @@ import Footer from "./components/Footer";
 import Cart from "./components/Cart";
 import { useState } from "react";
 import CartProvider from "./utils/CartProvider";
+import AboutUs from "./components/AboutUs";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -19,10 +21,28 @@ const App = () => {
     <CartProvider>
       <Header onShowCart={showCartHandler} />
       {isCartOpen && <Cart onHideCart={hideCartHandler} />}
-      <Body />
+      <Outlet />
       <Footer />
     </CartProvider>
   );
 };
+
+export const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <p>Somthing went wrong</p>,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/aboutus",
+        element: <AboutUs />,
+      },
+    ],
+  },
+]);
 
 export default App;

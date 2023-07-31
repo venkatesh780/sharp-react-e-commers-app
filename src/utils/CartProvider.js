@@ -4,7 +4,15 @@ import { useState } from "react";
 const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
 
+  let itemPresent = false;
+  let exitingItem = {};
   const addItemToCart = (item) => {
+    for (let itm of cartItems) {
+      if (itm.id === item.id) {
+        exitingItem = item;
+        console.log("duplicate", exitingItem);
+      }
+    }
     setCartItems((prevState) => {
       return [...prevState, item];
     });

@@ -1,0 +1,20 @@
+.item {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.item img {
+  object-fit: cover;
+}
+.item h2 {
+  text-align: center;
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.price {
+  font-size: 28px;
+}

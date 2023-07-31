@@ -2,15 +2,23 @@ import { Nav } from "react-bootstrap";
 import classes from "./Header.module.css";
 import HeaderTitle from "./HeaderTitle";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <>
       <header className={classes.header}>
-        <h4>HOME</h4>
+        <a>
+          <h4>HOME</h4>
+        </a>
 
-        <h4>STORE</h4>
-        <h4>ABOUT</h4>
-        <h4>CART</h4>
+        <a>
+          <h4>STORE</h4>
+        </a>
+        <a>
+          <h4>ABOUT</h4>
+        </a>
+        <a>
+          <button onClick={props.onShowCart}>CART</button>
+        </a>
       </header>
       <HeaderTitle />
     </>

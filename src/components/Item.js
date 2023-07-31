@@ -1,19 +1,14 @@
 import classes from "./Item.module.css";
+import { Button } from "react-bootstrap";
 
 const Item = (props) => {
-  console.log("item ");
   return (
-    <div>
-      <h5>Album</h5>
-      <img
-        src="https://prasadyash2411.github.io/ecom-website/img/Album%201.png"
-        alt="album"
-      />
-      <div>
-        <span>$ 12.9</span>
-        <span>
-          <button>ADD TO CART</button>
-        </span>
+    <div className={classes.item}>
+      <h2>{props.title}</h2>
+      <img src={props.imgURL} alt="album" />
+      <div className={classes.actions}>
+        <span className={classes.price}>$ {props.price}</span>
+        <Button className="bg-info">ADD TO CART</Button>
       </div>
     </div>
   );

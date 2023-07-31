@@ -1,0 +1,25 @@
+.cart {
+  background-color: white;
+  width: 40%;
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 0 auto;
+}
+.close_btn {
+  width: 70px;
+  height: 36px;
+}
+.cart_header {
+  display: flex;
+  justify-content: space-between;
+}
+.cart_titles {
+  display: flex;
+  justify-content: space-around;
+  text-decoration: underline;
+}
+.cart_actions {
+  align-self: center;
+}

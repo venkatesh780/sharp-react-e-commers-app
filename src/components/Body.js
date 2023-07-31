@@ -36,10 +36,25 @@ const productsArr = [
 ];
 
 const Body = () => {
+  const itemsList = (
+    <ul className={classes.item_list}>
+      {productsArr.map((item) => {
+        return (
+          <Item
+            key={Math.random() * 10}
+            title={item.title}
+            price={item.price}
+            imgURL={item.imageUrl}
+          />
+        );
+      })}
+    </ul>
+  );
   return (
-    <>
-      <Item />
-    </>
+    <div className={classes.body}>
+      <h3>Music</h3>
+      {itemsList}
+    </div>
   );
 };
 

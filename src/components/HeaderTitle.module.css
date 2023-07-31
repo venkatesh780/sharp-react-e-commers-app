@@ -1,0 +1,8 @@
+.header_title {
+  background-color: darkgrey;
+  color: white;
+  text-align: center;
+}
+.header_title h1 {
+  font-size: 100px;
+}

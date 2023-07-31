@@ -1,5 +1,13 @@
+import Body from "./components/Body";
+import Header from "./components/Header";
+
 const App = () => {
-  return <h2>Welcome to e-commerse website</h2>;
+  return (
+    <>
+      <Header />
+      <Body />
+    </>
+  );
 };
 
 export default App;

@@ -1,5 +1,7 @@
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
+import { useContext } from "react";
+import CartContext from "../utils/CartContext";
 
 const cartElements = [
   {
@@ -8,8 +10,6 @@ const cartElements = [
     price: 100,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-    quantity: 2,
   },
 
   {
@@ -18,8 +18,6 @@ const cartElements = [
     price: 50,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-    quantity: 3,
   },
 
   {
@@ -28,12 +26,15 @@ const cartElements = [
     price: 70,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-    quantity: 1,
   },
 ];
 
 const Cart = (props) => {
+  const cartCtx = useContext(CartContext);
+  const totalPrice = cartCtx.items.reduce((curr, item) => {
+    return curr + parseInt(item.price);
+  }, 0);
+
   return (
     <div className={classes.cart}>
       <div className={classes.cart_header}>
@@ -51,21 +52,21 @@ const Cart = (props) => {
       </div>
       <div>
         <ul>
-          {cartElements.map((item) => {
+          {cartCtx.items.map((item) => {
             return (
               <CartItem
                 key={Math.random()}
                 title={item.title}
                 price={item.price}
-                quantity={item.quantity}
-                imgURL={item.imageUrl}
+                imgURL={item.imgURL}
+                id={item.id}
               />
             );
           })}
         </ul>
       </div>
       <div className={classes.cart_actions}>
-        <h4>Total Price ${129}</h4>
+        <h4>Total Price ${totalPrice}</h4>
         <button>PURCHASE</button>
       </div>
     </div>

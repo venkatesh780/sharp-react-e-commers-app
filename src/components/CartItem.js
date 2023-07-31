@@ -1,6 +1,15 @@
 import classes from "./CartItem.module.css";
 
+import { useContext } from "react";
+import CartContext from "../utils/CartContext";
+
 const CartItem = (props) => {
+  const cartCtx = useContext(CartContext);
+
+  const removItemFromCartHandler = () => {
+    cartCtx.removeItem(props.id);
+  };
+
   return (
     <>
       <div className={classes.cart_item}>
@@ -12,8 +21,8 @@ const CartItem = (props) => {
           <h3>${props.price}</h3>
         </div>
 
-        <div className={classes.quantity}>{props.quantity}</div>
-        <button>Remove</button>
+        <div className={classes.quantity}>{1}</div>
+        <button onClick={removItemFromCartHandler}>Remove</button>
       </div>
       <hr />
     </>

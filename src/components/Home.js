@@ -1,4 +1,5 @@
 import classes from "./Home.module.css";
+import { useState, useEffect } from "react";
 
 const toursList = [
   {
@@ -33,14 +34,26 @@ const toursList = [
   },
 ];
 const Home = () => {
+  const [moviesList, setMoviesList] = useState([]);
+
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+  const getMovies = async () => {
+    const response = await fetch("https://swapi.dev/api/films");
+    const responseData = await response.json();
+    const data = [...responseData.results];
+    setMoviesList([...data]);
+  };
   const tourListItems = (
     <ul className={classes.list}>
-      {toursList.map((item) => {
+      {moviesList.map((item) => {
         return (
-          <li key={item.id}>
-            <span>{item.date}</span>
-            <span>{item.singer}</span>
-            <span>{item.venue}</span>
+          <li key={item.episode_id}>
+            <span>{item.release_date}</span>
+            <span>{item.title}</span>
+            <span>{item.director}</span>
             <button>BUY TICKETS</button>
           </li>
         );
@@ -50,7 +63,7 @@ const Home = () => {
   return (
     <div>
       <h1>Tours</h1>
-      {tourListItems}
+      {moviesList.length === 0 ? <p>Data is loading...</p> : tourListItems}
     </div>
   );
 };

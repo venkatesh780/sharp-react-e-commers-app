@@ -6,6 +6,7 @@ import { useState } from "react";
 import CartProvider from "./utils/CartProvider";
 import AboutUs from "./components/AboutUs";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Home from "./components/Home";
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -35,6 +36,10 @@ export const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/store",
         element: <Body />,
       },
       {

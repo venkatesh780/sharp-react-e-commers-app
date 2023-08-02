@@ -10,17 +10,15 @@ const Header = (props) => {
   return (
     <>
       <header className={classes.header}>
-        <a>
+        <Link to="/">
           <h4>HOME</h4>
-        </a>
+        </Link>
 
-        <a>
+        <Link to="/store">
           <h4>STORE</h4>
-        </a>
+        </Link>
         <Link to="/aboutus">
-          <a>
-            <h4>ABOUT</h4>
-          </a>
+          <h4>ABOUT</h4>
         </Link>
 
         <a>

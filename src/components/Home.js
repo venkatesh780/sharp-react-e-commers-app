@@ -39,7 +39,7 @@ const Home = () => {
         "https://ecommers-b566b-default-rtdb.firebaseio.com/movies.json"
       );
       const data = await response.json();
-      console.log(data);
+
       for (const key of Object.keys(data)) {
         movies.push({
           episode_id: key,

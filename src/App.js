@@ -7,6 +7,7 @@ import CartProvider from "./utils/CartProvider";
 import AboutUs from "./components/AboutUs";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./components/Home";
+import Contactus from "./components/Contactus";
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -45,6 +46,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/aboutus",
         element: <AboutUs />,
+      },
+      {
+        path: "/contactus",
+        element: <Contactus />,
       },
     ],
   },

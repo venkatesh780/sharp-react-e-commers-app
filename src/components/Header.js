@@ -20,6 +20,9 @@ const Header = (props) => {
         <Link to="/aboutus">
           <h4>ABOUT</h4>
         </Link>
+        <Link to="/contactus">
+          <h4>CONTACT US</h4>
+        </Link>
 
         <a>
           <button onClick={props.onShowCart}>

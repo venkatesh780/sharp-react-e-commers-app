@@ -6,7 +6,7 @@ const ErrorElement = (props) => {
     <div className={classes.error}>
       <div>
         <p>Somthing went wrong....</p>
-        <button onClick={props.onCancel}>cancel</button>
+        <button>cancel</button>
       </div>
     </div>
   );

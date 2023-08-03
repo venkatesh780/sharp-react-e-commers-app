@@ -1,0 +1,14 @@
+.movie_item {
+  background-color: white;
+  box-shadow: 5px 10px 8px 10px #888888;
+  padding: 15px;
+}
+.movie_item span {
+  margin-right: 20px;
+}
+.movie_item button {
+  margin-right: 10px;
+}
+.delete_btn {
+  background-color: brown;
+}

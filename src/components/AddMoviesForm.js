@@ -1,21 +1,20 @@
 import classes from "./AddMoviesForm.module.css";
 import { useRef } from "react";
 
-const AddMoviesForm = () => {
+const AddMoviesForm = (props) => {
   const titleRef = useRef("");
   const releaseDateRef = useRef("");
   const directorRef = useRef("");
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    const id = Math.floor(Math.random() * 1000);
+    // const id = Math.floor(Math.random() * 1000);
     const movieObj = {
-      episode_id: id,
       title: titleRef.current.value,
       release_date: releaseDateRef.current.value,
       director: directorRef.current.value,
     };
-    console.log(movieObj);
+    props.onSendMovie(movieObj);
 
     titleRef.current.value = "";
     releaseDateRef.current.value = "";

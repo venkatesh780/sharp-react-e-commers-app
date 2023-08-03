@@ -1,6 +1,7 @@
 import classes from "./Home.module.css";
 import { useState, useEffect, useCallback } from "react";
 import ErrorElement from "./ErrorElement";
+import AddMoviesForm from "./AddMoviesForm";
 
 const toursList = [
   {
@@ -78,6 +79,7 @@ const Home = () => {
   );
   return (
     <div>
+      <AddMoviesForm />
       <h1>Tours</h1>
       {!isError && moviesList.length === 0 ? (
         <p>Data is loading...</p>

@@ -3,6 +3,8 @@
   color: white;
   display: flex;
   justify-content: space-evenly;
+  position: fixed;
+  width: 100%;
 }
 .footer_title h1 {
   font-size: 80px;

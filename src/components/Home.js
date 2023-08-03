@@ -1,5 +1,6 @@
 import classes from "./Home.module.css";
 import { useState, useEffect } from "react";
+import ErrorElement from "./ErrorElement";
 
 const toursList = [
   {
@@ -35,16 +36,31 @@ const toursList = [
 ];
 const Home = () => {
   const [moviesList, setMoviesList] = useState([]);
+  const [isError, setIsError] = useState(false);
 
+  let intervalId;
   useEffect(() => {
     getMovies();
-  }, []);
+    if (isError) {
+      intervalId = setInterval(() => {
+        getMovies();
+      }, 5000);
+    }
+  }, [isError]);
+
+  const stopIntervalHandler = () => {
+    clearInterval(intervalId);
+  };
 
   const getMovies = async () => {
-    const response = await fetch("https://swapi.dev/api/films");
-    const responseData = await response.json();
-    const data = [...responseData.results];
-    setMoviesList([...data]);
+    try {
+      const response = await fetch("https://swapi.dev/api/films");
+      const responseData = await response.json();
+      const data = [...responseData.results];
+      setMoviesList([...data]);
+    } catch (e) {
+      setIsError(true);
+    }
   };
   const tourListItems = (
     <ul className={classes.list}>
@@ -63,7 +79,14 @@ const Home = () => {
   return (
     <div>
       <h1>Tours</h1>
-      {moviesList.length === 0 ? <p>Data is loading...</p> : tourListItems}
+      {!isError && moviesList.length === 0 ? (
+        <p>Data is loading...</p>
+      ) : (
+        tourListItems
+      )}
+      {moviesList.length === 0 && isError && (
+        <ErrorElement onCancel={stopIntervalHandler} />
+      )}
     </div>
   );
 };

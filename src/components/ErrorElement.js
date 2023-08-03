@@ -1,4 +1,5 @@
 import classes from "./ErrorElement.module.css";
+import React from "react";
 
 const ErrorElement = (props) => {
   return (
@@ -11,4 +12,4 @@ const ErrorElement = (props) => {
   );
 };
 
-export default ErrorElement;
+export default React.memo(ErrorElement);

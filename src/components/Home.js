@@ -1,5 +1,5 @@
 import classes from "./Home.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ErrorElement from "./ErrorElement";
 
 const toursList = [
@@ -48,9 +48,9 @@ const Home = () => {
     }
   }, [isError]);
 
-  const stopIntervalHandler = () => {
+  const stopIntervalHandler = useCallback(() => {
     clearInterval(intervalId);
-  };
+  });
 
   const getMovies = async () => {
     try {

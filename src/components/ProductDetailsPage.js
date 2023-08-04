@@ -1,6 +1,5 @@
-import classes from "./Body.module.css";
-import Item from "./Item";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import classes from "./ProductDetailsPage.module.css";
 
 const productsArr = [
   {
@@ -40,29 +39,23 @@ const productsArr = [
   },
 ];
 
-const Body = () => {
-  const itemsList = (
-    <ul className={classes.item_list}>
-      {productsArr.map((item) => {
-        return (
-          <Link to={`/store/${item.id}`} key={item.id}>
-            <Item
-              title={item.title}
-              price={item.price}
-              imgURL={item.imageUrl}
-              id={item.id}
-            />
-          </Link>
-        );
-      })}
-    </ul>
-  );
+const ProductDetailsPage = () => {
+  const { id } = useParams();
+  const product = productsArr.filter((item) => id === item.id);
+  const item = product[0];
   return (
-    <div className={classes.body}>
-      <h3>Music</h3>
-      {itemsList}
+    <div className={classes.product_container}>
+      <div>
+        <h1>{item.title}</h1>
+        <img src={item.imageUrl} />
+      </div>
+
+      <div className={classes.actions}>
+        <span>$ {item.price}</span>
+        <button>Add TO CART</button>
+      </div>
     </div>
   );
 };
 
-export default Body;
+export default ProductDetailsPage;

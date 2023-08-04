@@ -16,7 +16,7 @@ const Item = (props) => {
   };
 
   return (
-    <div className={classes.item}>
+    <div className={classes.item} key={props.id}>
       <h2>{props.title}</h2>
       <img src={props.imgURL} alt="album" />
       <div className={classes.actions}>

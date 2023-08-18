@@ -10,7 +10,7 @@ const Header = (props) => {
   return (
     <>
       <header className={classes.header}>
-        <Link to="/">
+        <Link to="/home">
           <h4>HOME</h4>
         </Link>
 
@@ -22,6 +22,9 @@ const Header = (props) => {
         </Link>
         <Link to="/contactus">
           <h4>CONTACT US</h4>
+        </Link>
+        <Link to="/">
+          <h4> Sign Up</h4>
         </Link>
 
         <a>

@@ -1,0 +1,17 @@
+.signup_form {
+  max-width: 782px;
+  width: 80%;
+  margin: 1rem auto;
+  background-color: violet;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 28px;
+}
+.form_input {
+  margin: 1rem auto;
+}
+label,
+input {
+  display: block;
+}

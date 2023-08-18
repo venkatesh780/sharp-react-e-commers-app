@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./components/Home";
 import Contactus from "./components/Contactus";
 import ProductDetailsPage from "./components/ProductDetailsPage";
+import SignUp from "./components/SignUp";
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -38,6 +39,10 @@ export const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <SignUp />,
+      },
+      {
+        path: "/home",
         element: <Home />,
       },
       {

@@ -1,5 +1,6 @@
 import classes from "./SignUp.module.css";
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
+import TokenContext from "../utils/TokenContext";
 
 const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -8,9 +9,12 @@ const SignUp = () => {
   const emailInputRef = useRef("");
   const passwordInputRef = useRef("");
 
+  const tokenCtx = useContext(TokenContext);
+
   const submitHandler = (e) => {
     e.preventDefault();
     setIsLoading(true);
+    console.log("submit triggered");
 
     const email = emailInputRef.current.value;
     const password = passwordInputRef.current.value;
@@ -29,7 +33,7 @@ const SignUp = () => {
     if (isLogin) {
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAQHGDwuaaFsjKMS1h8GbOCG3sJQqPAcVY";
-      console.log("login working");
+      console.log(tokenCtx.loginStatus);
     } else {
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAQHGDwuaaFsjKMS1h8GbOCG3sJQqPAcVY";
@@ -57,7 +61,8 @@ const SignUp = () => {
       })
       .then((data) => {
         setIsLoading(false);
-        console.log(data);
+        const { idToken } = data;
+        tokenCtx.addToken(idToken);
       })
       .catch((error) => {
         alert(error.messsage);

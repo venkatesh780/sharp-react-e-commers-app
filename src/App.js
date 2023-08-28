@@ -10,6 +10,7 @@ import Home from "./components/Home";
 import Contactus from "./components/Contactus";
 import ProductDetailsPage from "./components/ProductDetailsPage";
 import SignUp from "./components/SignUp";
+import TokenProvider from "./utils/TokenProvider";
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -23,10 +24,12 @@ const App = () => {
 
   return (
     <CartProvider>
-      <Header onShowCart={showCartHandler} />
-      {isCartOpen && <Cart onHideCart={hideCartHandler} />}
-      <Outlet />
-      <Footer />
+      <TokenProvider>
+        <Header onShowCart={showCartHandler} />
+        {isCartOpen && <Cart onHideCart={hideCartHandler} />}
+        <Outlet />
+        <Footer />
+      </TokenProvider>
     </CartProvider>
   );
 };

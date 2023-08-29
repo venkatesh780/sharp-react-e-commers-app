@@ -1,8 +1,11 @@
 import classes from "./SignUp.module.css";
 import { useRef, useState, useContext } from "react";
 import TokenContext from "../utils/TokenContext";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [formTitle, setFormTitle] = useState("Sign Up");
@@ -63,6 +66,7 @@ const SignUp = () => {
         setIsLoading(false);
         const { idToken } = data;
         tokenCtx.addToken(idToken);
+        navigate("/store");
       })
       .catch((error) => {
         alert(error.messsage);

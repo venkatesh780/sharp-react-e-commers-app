@@ -11,6 +11,7 @@ import Contactus from "./components/Contactus";
 import ProductDetailsPage from "./components/ProductDetailsPage";
 import SignUp from "./components/SignUp";
 import TokenProvider from "./utils/TokenProvider";
+import ProfileForm from "./components/ProfileForm";
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -63,6 +64,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/store/:id",
         element: <ProductDetailsPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfileForm />,
       },
     ],
   },

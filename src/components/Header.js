@@ -51,6 +51,11 @@ const Header = (props) => {
             CART-{cartCtx.totalQuantity}
           </button>
         )}
+        {isUserLogin && (
+          <Link to="/profile">
+            <h4>Profile</h4>
+          </Link>
+        )}
       </header>
       <HeaderTitle />
     </>

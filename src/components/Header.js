@@ -2,15 +2,17 @@ import classes from "./Header.module.css";
 import HeaderTitle from "./HeaderTitle";
 import CartContext from "../utils/CartContext";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TokenContext from "../utils/TokenContext";
 
 const Header = (props) => {
   const cartCtx = useContext(CartContext);
   const tokenCtx = useContext(TokenContext);
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
     tokenCtx.clearToken();
+    navigate("/");
   };
 
   const isUserLogin = tokenCtx.loginStatus;
